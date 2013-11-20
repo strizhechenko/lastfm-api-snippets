@@ -13,18 +13,17 @@ common_artists() {
 
 common_artists_count() {
 	echo "Количество общих артистов." >&2
-	common_artists $1 $2 | wc -l
+	common_artists $@ | wc -l
 }
 
 main() {
-	./get_user_artists_list.sh $1
-	./get_user_artists_list.sh $2
+	for user in $1 $2; do
+		./get_user_artists_list.sh $user
+		xml2text $user
+	done
 
-	xml2text $1
-	xml2text $2
-
-	common_artists_count $2
 	common_artists $@
+	common_artists_count $@
 }
 
 main $@

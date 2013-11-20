@@ -18,8 +18,7 @@ common_artists_count() {
 
 main() {
 	for user in $1 $2; do
-		./get_user_artists_list.sh $user
-		xml2text $user
+		./get_user_artists_list.sh $user && xml2text $user
 	done
 
 	common_artists $@

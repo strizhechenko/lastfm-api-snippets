@@ -23,8 +23,8 @@ main() {
 	xml2text $1
 	xml2text $2
 
-	common_artists_count $1 $2
-	common_artists $1 $2
+	common_artists_count $2
+	common_artists $@
 }
 
-main $1 $2
+main $@
